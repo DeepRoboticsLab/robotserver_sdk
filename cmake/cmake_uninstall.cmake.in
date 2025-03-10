@@ -1,0 +1,67 @@
+if(NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt")
+    message(FATAL_ERROR "Cannot find install manifest: @CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt")
+endif()
+
+file(READ "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt" files)
+string(REGEX REPLACE "\n" ";" files "${files}")
+
+# 收集所有目录以便后续清理
+set(directories "")
+
+foreach(file ${files})
+    message(STATUS "正在卸载 $ENV{DESTDIR}${file}")
+    if(IS_SYMLINK "$ENV{DESTDIR}${file}" OR EXISTS "$ENV{DESTDIR}${file}")
+        exec_program(
+            "@CMAKE_COMMAND@" ARGS "-E remove \"$ENV{DESTDIR}${file}\""
+            OUTPUT_VARIABLE rm_out
+            RETURN_VALUE rm_retval
+        )
+        if(NOT "${rm_retval}" STREQUAL 0)
+            message(FATAL_ERROR "卸载文件出错: $ENV{DESTDIR}${file}")
+        endif()
+
+        # 获取文件所在目录
+        get_filename_component(dir "$ENV{DESTDIR}${file}" DIRECTORY)
+        list(APPEND directories "${dir}")
+    else()
+        message(STATUS "文件 $ENV{DESTDIR}${file} 不存在。")
+    endif()
+endforeach()
+
+# 特别检查并清理 lib/cmake 和 share 目录
+list(APPEND directories "$ENV{DESTDIR}@CMAKE_INSTALL_PREFIX@/lib/cmake/@PROJECT_NAME@")
+list(APPEND directories "$ENV{DESTDIR}@CMAKE_INSTALL_PREFIX@/share/@PROJECT_NAME@")
+list(APPEND directories "$ENV{DESTDIR}@CMAKE_INSTALL_PREFIX@/share/@PROJECT_NAME@/examples")
+list(APPEND directories "$ENV{DESTDIR}@CMAKE_INSTALL_PREFIX@/share/@PROJECT_NAME@/examples/advanced")
+
+# 递归查找所有可能的子目录
+file(GLOB_RECURSE all_files "$ENV{DESTDIR}@CMAKE_INSTALL_PREFIX@/share/@PROJECT_NAME@/*")
+foreach(item ${all_files})
+    if(IS_DIRECTORY "${item}")
+        list(APPEND directories "${item}")
+    endif()
+endforeach()
+
+# 删除空目录（从最深层次开始）
+list(REMOVE_DUPLICATES directories)
+list(SORT directories)
+list(REVERSE directories)
+
+foreach(dir ${directories})
+    if(EXISTS "${dir}" AND IS_DIRECTORY "${dir}")
+        # 检查目录是否为空
+        file(GLOB entries "${dir}/*")
+        list(LENGTH entries entry_count)
+        if(${entry_count} EQUAL 0)
+            message(STATUS "正在删除空目录: ${dir}")
+            exec_program(
+                "@CMAKE_COMMAND@" ARGS "-E remove_directory \"${dir}\""
+                OUTPUT_VARIABLE rm_out
+                RETURN_VALUE rm_retval
+            )
+            if(NOT "${rm_retval}" STREQUAL 0)
+                message(STATUS "无法删除目录: ${dir}")
+            endif()
+        endif()
+    endif()
+endforeach()
