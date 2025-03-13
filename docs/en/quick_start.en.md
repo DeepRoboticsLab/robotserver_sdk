@@ -18,6 +18,14 @@ chmod +x scripts/install_dependencies.sh
 ./scripts/install_dependencies.sh
 ```
 
+## Preparation
+
+Before you start using the SDK, you need to refer to the *Jueying X30 Pro Application Manual* to complete the following tasks:
+
+1. Use the joystick to control the robot to complete the mapping work
+2. Use the joystick to create a new navigation route and synchronise it to the navigation host
+3. Rename the synchronised navigation routes to `default_navigation_points.json` and replace the `. /examples/basic/default_navigation_points.json` file in the SDK
+
 ## Installing the SDK
 
 ### Building from Source

@@ -18,6 +18,14 @@ chmod +x scripts/install_dependencies.sh
 ./scripts/install_dependencies.sh
 ```
 
+## 準備工作
+
+在開始使用SDK前，需要參考《絕影X30 Pro應用手冊》，完成以下工作：
+
+1. 使用手柄控制機器狗完成巡檢地點的建圖工作
+2. 用手柄新建導航路線，並同步到導航主機
+3. 將同步后的導航路線重命名為`default_navigation_points.json`，然後覆蓋SDK中的 `./examples/basic/default_navigation_points.json` 文件
+
 ## 安裝 SDK
 
 ### 從原始碼構建

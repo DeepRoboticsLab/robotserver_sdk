@@ -61,18 +61,6 @@ install_deps_debian() {
 
     print_info "正在安装nlohmann/json库..."
     sudo apt-get install -y nlohmann-json3-dev
-
-    print_info "正在安装rapidxml库..."
-    # rapidxml通常是header-only库，可以直接下载
-    if [ ! -d "rapidxml" ]; then
-        print_info "下载rapidxml..."
-        mkdir -p rapidxml
-        wget -q https://sourceforge.net/projects/rapidxml/files/rapidxml/rapidxml%201.13/rapidxml-1.13.zip/download -O rapidxml.zip
-        unzip -q rapidxml.zip -d rapidxml
-        print_info "将rapidxml安装到系统目录..."
-        sudo cp rapidxml/rapidxml-1.13/*.hpp /usr/local/include/
-        rm -rf rapidxml rapidxml.zip
-    fi
 }
 
 # 安装依赖 - CentOS/RHEL/Fedora
@@ -99,18 +87,6 @@ install_deps_redhat() {
         cd ../..
         rm -rf json
     fi
-
-    print_info "正在安装rapidxml库..."
-    # rapidxml通常是header-only库，可以直接下载
-    if [ ! -d "rapidxml" ]; then
-        print_info "下载rapidxml..."
-        mkdir -p rapidxml
-        wget -q https://sourceforge.net/projects/rapidxml/files/rapidxml/rapidxml%201.13/rapidxml-1.13.zip/download -O rapidxml.zip
-        unzip -q rapidxml.zip -d rapidxml
-        print_info "将rapidxml安装到系统目录..."
-        sudo cp rapidxml/rapidxml-1.13/*.hpp /usr/local/include/
-        rm -rf rapidxml rapidxml.zip
-    fi
 }
 
 # 安装依赖 - macOS
@@ -132,18 +108,6 @@ install_deps_macos() {
 
     print_info "正在安装nlohmann/json库..."
     brew install nlohmann-json
-
-    print_info "正在安装rapidxml库..."
-    # rapidxml通常是header-only库，可以直接下载
-    if [ ! -d "rapidxml" ]; then
-        print_info "下载rapidxml..."
-        mkdir -p rapidxml
-        curl -s -L https://sourceforge.net/projects/rapidxml/files/rapidxml/rapidxml%201.13/rapidxml-1.13.zip/download -o rapidxml.zip
-        unzip -q rapidxml.zip -d rapidxml
-        print_info "将rapidxml安装到系统目录..."
-        sudo cp rapidxml/rapidxml-1.13/*.hpp /usr/local/include/
-        rm -rf rapidxml rapidxml.zip
-    fi
 }
 
 # 验证安装
@@ -172,13 +136,6 @@ verify_installation() {
         print_success "nlohmann/json库已安装"
     else
         print_warning "未检测到nlohmann/json库，可能需要手动安装"
-    fi
-
-    # 检查rapidxml
-    if [ -f "/usr/include/rapidxml.hpp" ] || [ -f "/usr/local/include/rapidxml.hpp" ]; then
-        print_success "rapidxml库已安装"
-    else
-        print_warning "未检测到rapidxml库，可能需要手动安装"
     fi
 
     if [ "$INSTALL_SUCCESS" = false ]; then
@@ -216,7 +173,6 @@ main() {
             print_info "- CMake 3.10或更高版本"
             print_info "- Boost 1.66或更高版本"
             print_info "- nlohmann/json库"
-            print_info "- rapidxml库"
             exit 1
             ;;
     esac

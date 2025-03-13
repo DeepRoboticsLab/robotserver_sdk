@@ -45,8 +45,8 @@ sudo make install / sudo make uninstall (optional)
 
 參考 `examples/basic/basic_example.cpp` 文件，實現了一個簡單的示例，展示如何使用 SDK 連接到機器狗並發送導航任務。
 
-1. 先建圖參考用戶手冊
-2. 手柄新建導航路線同步到導航主機，覆蓋 `./examples/basic/default_navigation_points.json` 文件
+1. 參考《绝影X30 Pro应用手册》，完成建圖工作
+2. 用手柄新建導航路線，並同步到導航主機，重命名為`default_navigation_points.json`后覆蓋 `./examples/basic/default_navigation_points.json` 文件
 3. 運行示例程序
 
 ```bash
@@ -62,10 +62,18 @@ sudo make install / sudo make uninstall (optional)
 ├── README.zh-CN.md                # 簡體中文文檔
 ├── README.zh-TW.md                # 繁體中文文檔
 ├── docs                           # 文檔目錄
-│   └── zh-CN                      # 中文文檔
-│       └── quick_start.zh-CN.md   # 中文快速入門指南
-│       └── architecture.zh-CN.md  # 中文架構概述
-│       └── api_reference.zh-CN.md # 中文API參考
+│   ├── zh-CN                      # 簡體中文文檔
+│   │  ├── quick_start.zh-CN.md    # 簡體中文快速入門指南
+│   │  ├── architecture.zh-CN.md   # 簡體中文架構概述
+│   │  └── api_reference.zh-CN.md  # 簡體中文API參考
+│   ├── zh-TW                      # 繁體中文文檔
+│   │  ├── quick_start.zh-TW.md    # 繁體中文快速入門指南
+│   │  ├── architecture.zh-TW.md   # 繁體中文架構概述
+│   │  └── api_reference.zh-TW.md  # 繁體中文API參考
+│   └── en                         # 英文文檔
+│       ├── quick_start.zh-en.md   # 英文快速入門指南
+│       ├── architecture.zh-en.md  # 英文架構概述
+│       └── api_reference.zh-en.md # 英文API參考
 ├── examples                       # 示例代碼目錄
 │   └── basic                      # 基礎示例
 │       ├── basic_example.cpp      # 基礎示例代碼

@@ -18,6 +18,14 @@ chmod +x scripts/install_dependencies.sh
 ./scripts/install_dependencies.sh
 ```
 
+## 准备工作
+
+在开始使用SDK前，需要参考《绝影X30 Pro应用手册》，完成以下工作：
+
+1. 使用手柄控制机器狗完成巡检地点的建图工作
+2. 用手柄新建导航路线，并同步到导航主机
+3. 将同步后的导航路线重命名为`default_navigation_points.json`，然后覆盖SDK中的 `./examples/basic/default_navigation_points.json` 文件
+
 ## 安装 SDK
 
 ### 从源代码构建

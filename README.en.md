@@ -45,8 +45,8 @@ sudo make install / sudo make uninstall (optional)
 
 Refer to the `examples/basic/basic_example.cpp` file, which implements a simple example showing how to use the SDK to connect to the robot dog and send navigation tasks.
 
-1. First create a map as referenced in the user manual
-2. Use the controller to create a new navigation route and synchronize it to the navigation host, replace the `./examples/basic/default_navigation_points.json` file
+1. Refer to the *Jueying X30 Pro Application Manual* to complete the mapping work
+2. Use the controller to create a new navigation route and synchronize it to the navigation host, rename it to `default_navigation_points.json` and replace the `./examples/basic/default_navigation_points.json` file
 3. Run the example program
 
 ```bash
@@ -62,10 +62,18 @@ Refer to the `examples/basic/basic_example.cpp` file, which implements a simple 
 ├── README.zh-CN.md                # Simplified Chinese documentation
 ├── README.zh-TW.md                # Traditional Chinese documentation
 ├── docs                           # Documentation directory
-│   └── zh-CN                      # Chinese documentation
-│       └── quick_start.zh-CN.md   # Chinese quick start guide
-│       └── architecture.zh-CN.md  # Chinese architecture overview
-│       └── api_reference.zh-CN.md # Chinese API reference
+│   ├── zh-CN                      # Simplified Chinese documentation
+│   │  ├── quick_start.zh-CN.md    # Simplified Chinese quick start guide
+│   │  ├── architecture.zh-CN.md   # Simplified Chinese architecture overview
+│   │  └── api_reference.zh-CN.md  # Simplified Chinese API reference
+│   ├── zh-TW                      # Traditional Chinese documentation
+│   │  ├── quick_start.zh-TW.md    # Traditional Chinese quick start guide
+│   │  ├── architecture.zh-TW.md   # Traditional Chinese architecture overview
+│   │  └── api_reference.zh-TW.md  # Traditional Chinese API reference
+│   └── en                         # English documentation
+│       ├── quick_start.zh-en.md   # English quick start guide
+│       ├── architecture.zh-en.md  # English architecture overview
+│       └── api_reference.zh-en.md # English API reference
 ├── examples                       # Example code directory
 │   └── basic                      # Basic example
 │       ├── basic_example.cpp      # Basic example code
