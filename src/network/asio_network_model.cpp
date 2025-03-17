@@ -51,16 +51,23 @@ bool AsioNetworkModel::connect(const std::string& host, uint16_t port) {
                 connect_completed = true;
             });
 
-        // 运行io_context，但设置超时
-        // 这里使用run_one_for，它会运行一个操作或等待指定的时间
-        // 如果连接在超时前完成，它会立即返回
-        if (!io_context_.run_one_for(connection_timeout_)) {
-            // 超时，取消所有操作
-            socket_.cancel();
-            socket_.close();
-            std::cerr << "连接超时" << std::endl;
-            return false;
+        // 创建一个定时器用于超时控制
+        boost::asio::steady_timer timeout_timer(io_context_);
+        timeout_timer.expires_after(connection_timeout_);
+        timeout_timer.async_wait([this, &connect_completed](const boost::system::error_code& ec) {
+            if (!ec && !connect_completed) {
+                // 超时，取消连接操作
+                socket_.cancel();
+            }
+        });
+
+        // 运行io_context直到连接完成或超时
+        while (!connect_completed && io_context_.run_one()) {
+            // 继续运行直到有事件发生
         }
+
+        // 取消定时器
+        timeout_timer.cancel();
 
         // 检查连接是否成功
         if (connect_ec || !connect_completed) {
