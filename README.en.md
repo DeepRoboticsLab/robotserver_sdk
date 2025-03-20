@@ -53,6 +53,8 @@ Refer to the `examples/basic/basic_example.cpp` file, which implements a simple 
 ./bin/basic_example 192.168.1.106 30000
 ```
 
+> Caution: You can refer to the '3.1 Remote Login' section in the 「Jueying X30 Pro Application Manual」 to view the robotserver's log information in the robot_server.XXX.log file (XXX is the date information) in the corresponding date folder under the jy_cog/system/log directory of the navigation host via remote login. 
+
 ## Project Structure
 
 ```bash
@@ -63,13 +65,13 @@ Refer to the `examples/basic/basic_example.cpp` file, which implements a simple 
 ├── README.zh-TW.md                # Traditional Chinese documentation
 ├── docs                           # Documentation directory
 │   ├── zh-CN                      # Simplified Chinese documentation
-│   │  ├── quick_start.zh-CN.md    # Simplified Chinese quick start guide
-│   │  ├── architecture.zh-CN.md   # Simplified Chinese architecture overview
-│   │  └── api_reference.zh-CN.md  # Simplified Chinese API reference
+│   │   ├── quick_start.zh-CN.md   # Simplified Chinese quick start guide
+│   │   ├── architecture.zh-CN.md  # Simplified Chinese architecture overview
+│   │   └── api_reference.zh-CN.md # Simplified Chinese API reference
 │   ├── zh-TW                      # Traditional Chinese documentation
-│   │  ├── quick_start.zh-TW.md    # Traditional Chinese quick start guide
-│   │  ├── architecture.zh-TW.md   # Traditional Chinese architecture overview
-│   │  └── api_reference.zh-TW.md  # Traditional Chinese API reference
+│   │   ├── quick_start.zh-TW.md   # Traditional Chinese quick start guide
+│   │   ├── architecture.zh-TW.md  # Traditional Chinese architecture overview
+│   │   └── api_reference.zh-TW.md # Traditional Chinese API reference
 │   └── en                         # English documentation
 │       ├── quick_start.zh-en.md   # English quick start guide
 │       ├── architecture.zh-en.md  # English architecture overview

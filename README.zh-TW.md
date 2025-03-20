@@ -53,6 +53,8 @@ sudo make install / sudo make uninstall (optional)
 ./bin/basic_example 192.168.1.106 30000
 ```
 
+> 注意：用戶可以參考《绝影X30 Pro应用手册》的“3.1 远程登录”部分，通過遠程登陸的方式在106感知主機中jy_cog/system/log目錄下相應的日期文件夾中的robot_server.XXX.log（XXX爲日期信息）文件中查看robotserver的日誌信息。
+
 ## 項目結構
 
 ```bash
@@ -63,13 +65,13 @@ sudo make install / sudo make uninstall (optional)
 ├── README.zh-TW.md                # 繁體中文文檔
 ├── docs                           # 文檔目錄
 │   ├── zh-CN                      # 簡體中文文檔
-│   │  ├── quick_start.zh-CN.md    # 簡體中文快速入門指南
-│   │  ├── architecture.zh-CN.md   # 簡體中文架構概述
-│   │  └── api_reference.zh-CN.md  # 簡體中文API參考
+│   │   ├── quick_start.zh-CN.md   # 簡體中文快速入門指南
+│   │   ├── architecture.zh-CN.md  # 簡體中文架構概述
+│   │   └── api_reference.zh-CN.md # 簡體中文API參考
 │   ├── zh-TW                      # 繁體中文文檔
-│   │  ├── quick_start.zh-TW.md    # 繁體中文快速入門指南
-│   │  ├── architecture.zh-TW.md   # 繁體中文架構概述
-│   │  └── api_reference.zh-TW.md  # 繁體中文API參考
+│   │   ├── quick_start.zh-TW.md   # 繁體中文快速入門指南
+│   │   ├── architecture.zh-TW.md  # 繁體中文架構概述
+│   │   └── api_reference.zh-TW.md # 繁體中文API參考
 │   └── en                         # 英文文檔
 │       ├── quick_start.zh-en.md   # 英文快速入門指南
 │       ├── architecture.zh-en.md  # 英文架構概述
