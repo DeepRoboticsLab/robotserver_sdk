@@ -4,6 +4,8 @@
 
 RobotServer SDK provides a simple and easy-to-use interface for controlling and monitoring the navigation tasks of robot dogs. The SDK encapsulates the underlying protocol and network communication details, allowing developers to focus on implementing business logic.
 
+> WARNING: Please install and use the sdk in your own computer, it is strictly forbidden to install and use the sdk in 106 navagation host or other robot's host.
+
 ## Features
 
 - Connect and disconnect communication with the robot dog control system
@@ -46,8 +48,9 @@ sudo make install / sudo make uninstall (optional)
 Refer to the `examples/basic/basic_example.cpp` file, which implements a simple example showing how to use the SDK to connect to the robot dog and send navigation tasks.
 
 1. Refer to the *Jueying X30 Pro Application Manual* to complete the mapping work
-2. Use the controller to create a new navigation route and synchronize it to the navigation host, rename it to `default_navigation_points.json` and replace the `./examples/basic/default_navigation_points.json` file
-3. Run the example program
+2. Use the controller to create a new navigation route and synchronize it to the navigation host, rename it to `default_navigation_points.json`
+3. If the sdk is not compiled, relpace the `. /examples/basic/default_navigation_points.json` file; if the sdk is compiled, relpace the `. /build/bin/default_navigation_points.json` file.
+4. Run the sample application
 
 ```bash
 ./bin/basic_example 192.168.1.106 30000
@@ -116,7 +119,9 @@ Refer to the `examples/basic/basic_example.cpp` file, which implements a simple 
 If you encounter any problems during use, or have any suggestions and feedback, please contact us through the following ways:
 
 - Submit a GitHub Issue
-- Send an email to support@deeprobotics.cn
+- Contact Technical Support
+    - For mainland China users, please contact technical support for help
+    - Overseas users can send email to zhangminjie@deeprobotics.cn for help
 
 ## License
 

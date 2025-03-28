@@ -4,6 +4,8 @@
 
 RobotServer SDK 提供了一套簡單易用的接口，用於控制和監控機器狗的導航任務。該 SDK 封裝了底層的協議和網絡通信細節，使開發者能夠專注於業務邏輯的實現。
 
+> 警告：請在您自己的計算機上安裝和使用SDK，嚴禁在 106 導航主機或其他機器人主機上安裝和使用SDK。
+
 ## 功能特性
 
 - 連接和斷開與機器狗控制系統的通信
@@ -45,9 +47,10 @@ sudo make install / sudo make uninstall (optional)
 
 參考 `examples/basic/basic_example.cpp` 文件，實現了一個簡單的示例，展示如何使用 SDK 連接到機器狗並發送導航任務。
 
-1. 參考《绝影X30 Pro应用手册》，完成建圖工作
-2. 用手柄新建導航路線，並同步到導航主機，重命名為`default_navigation_points.json`后覆蓋 `./examples/basic/default_navigation_points.json` 文件
-3. 運行示例程序
+1. 參考《绝影X30 Pro应用手册》，完成建圖工作 
+2. 用手柄新建導航路線，並同步到導航主機，重命名為`default_navigation_points.json`
+3. 若sdk未編譯，請覆蓋 `./examples/basic/default_navigation_points.json` 文件；若sdk已編譯，請覆蓋 `./build/bin/default_navigation_points.json` 文件
+4. 運行示例程序覆蓋
 
 ```bash
 ./bin/basic_example 192.168.1.106 30000
@@ -116,7 +119,9 @@ sudo make install / sudo make uninstall (optional)
 如果您在使用過程中遇到任何問題，或者有任何建議和反饋，請通過以下方式聯繫我們：
 
 - 提交 GitHub Issue
-- 發送郵件至 support@deeprobotics.cn
+- 聯繫技術支持
+    - 中國大陸用戶請直接聯繫技術支持
+    - 海外用戶可發送郵件至zhangminjie@deeprobotics.cn
 
 ## 許可證
 
